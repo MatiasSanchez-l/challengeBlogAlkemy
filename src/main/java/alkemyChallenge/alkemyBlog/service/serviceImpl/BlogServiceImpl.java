@@ -5,9 +5,13 @@ import alkemyChallenge.alkemyBlog.repository.BlogRepository;
 import alkemyChallenge.alkemyBlog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class BlogServiceImpl implements BlogService {
      @Autowired
      private BlogRepository blogRepository;
