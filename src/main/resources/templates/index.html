@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+ <div align="center">
+     <h1>Home</h1>
+     <table>
+         <thead>
+            <tr>
+                <th>id</th>
+                <th>titulo</th>
+                <th>contenido</th>
+                <th>categoria</th>
+                <th>fecha</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr th:each="blog : ${listBlog}">
+                <td th:text="${blog.titulo}"></td>
+                <td th:text="${blog.contenido}"></td>
+                <td th:text="${blog.categoria}"></td>
+                <td th:text="${blog.fecha}"></td>
+            </tr>
+         </tbody>
+     </table>
+ </div>
+</body>
+</html>
