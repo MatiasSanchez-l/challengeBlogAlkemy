@@ -31,7 +31,7 @@
                            type="button">Ver</a>
                         <a th:href="@{/posts/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-success text-light"
                            type="button">Editar</a>
-                        <a class="btn btn-success text-light"
+                        <a th:href="@{/posts/deletePost/{id}(id=${post.id})}" class="btn btn-success text-light"
                            type="button">Eliminar</a>
                     </div>
                 </td>
