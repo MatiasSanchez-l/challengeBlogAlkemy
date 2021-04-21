@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,7 +23,14 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post getPostById(Long id) {
-        return null;
+        Optional<Post> optional = postRepository.findById(id);
+        Post post = null;
+        if(optional.isPresent()){
+            post = optional.get();
+        }else{
+            throw new RuntimeException("Post not found for id :: " + id);
+        }
+        return post;
     }
 
     @Override
