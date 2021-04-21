@@ -1,6 +1,7 @@
 package alkemyChallenge.alkemyBlog.controller;
 
 
+import alkemyChallenge.alkemyBlog.model.Post;
 import alkemyChallenge.alkemyBlog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,5 +19,12 @@ public class PostController {
     public String viewHomePage(Model model){
         model.addAttribute("listBlog", postService.getAllPosts());
         return "index";
+    }
+
+    @GetMapping("/showNewPostForm")
+    public String showNewPostForm(Model model){
+        Post post = new Post();
+        model.addAttribute("post", post);
+        return "new_post";
     }
 }
