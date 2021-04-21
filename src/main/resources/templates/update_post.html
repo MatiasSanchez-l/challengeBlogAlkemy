@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head"/>
+<body>
+<div th:replace="fragments :: header"></div>
+<main class="container">
+    <div align="center">
+        <h1 class="text-center">Editar Post</h1>
+        <form action="#" th:action="@{/posts/savePost}" th:object="${post}" method="POST">
+            <input type="text" th:field="*{titulo}"
+                   placeholder="Titulo" class="form-control mb-4 col-8">
+            <input type="text" th:field="*{contenido}"
+                   placeholder="Contenido" class="form-control mb-4 col-8">
+            <input type="text" th:field="*{categoria}"
+                   placeholder="Categoria" class="form-control mb-4 col-8">
+            <input type="hidden" th:field="*{id}">
+            <button type="submit" class="btn btn-info col-4">Editar Post</button>
+        </form>
+    </div>
+</main>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>
