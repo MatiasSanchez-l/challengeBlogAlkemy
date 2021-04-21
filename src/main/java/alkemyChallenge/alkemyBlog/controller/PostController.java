@@ -49,4 +49,10 @@ public class PostController {
         model.addAttribute("title", "EDITAR POST");
         return "update_post";
     }
+
+    @GetMapping("/deletePost/{id}")
+    public String deletePost(@PathVariable(value = "id") long id){
+        this.postService.deletePostById(id);
+        return "redirect:/posts";
+    }
 }
