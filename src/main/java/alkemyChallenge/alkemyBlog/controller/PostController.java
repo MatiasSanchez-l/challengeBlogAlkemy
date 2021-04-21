@@ -17,7 +17,7 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String viewHomePage(Model model){
         model.addAttribute("listBlog", postService.getAllPosts());
         model.addAttribute("title", "HOME");
