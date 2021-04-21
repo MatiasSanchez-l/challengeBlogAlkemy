@@ -25,7 +25,9 @@ public class PostController {
     @GetMapping("/showNewPostForm")
     public String showNewPostForm(Model model){
         Post post = new Post();
+
         model.addAttribute("post", post);
+        model.addAttribute("title", "CREAR POST");
         return "new_post";
     }
 }
