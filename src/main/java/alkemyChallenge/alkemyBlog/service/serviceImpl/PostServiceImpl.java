@@ -17,7 +17,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getAllPosts() {
-        return postRepository.findAll(Sort.by(Sort.Direction.ASC, "fecha"));
+        return postRepository.findAll(Sort.by(Sort.Direction.DESC, "fecha"));
     }
 
     @Override
