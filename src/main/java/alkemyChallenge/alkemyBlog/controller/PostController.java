@@ -6,10 +6,7 @@ import alkemyChallenge.alkemyBlog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -42,5 +39,14 @@ public class PostController {
 
         postService.savePost(post);
         return "redirect:/posts/";
+    }
+
+    @GetMapping("/showFormForUpdate/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") long id,
+                                    Model model){
+        Post post = postService.getPostById(id);
+        model.addAttribute("post", post);
+        model.addAttribute("title", "EDITAR POST");
+        return "update_post";
     }
 }
