@@ -1,7 +1,8 @@
 package alkemyChallenge.alkemyBlog.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Posts")
@@ -22,8 +23,9 @@ public class Post {
     @Column(name = "categoria")
     private String categoria;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "fecha")
-    private Date fecha;
+    private LocalDateTime fecha;
 
     public Long getId() {
         return id;
@@ -65,11 +67,11 @@ public class Post {
         this.categoria = categoria;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 }
