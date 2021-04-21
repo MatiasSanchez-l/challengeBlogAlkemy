@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head"/>
 <body>
-
+<div th:replace="fragments :: header"></div>
+<main class="container">
+    <h1>CREAR POST</h1>
+    <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
+        <input type="text" th:field="*{titulo}"
+               placeholder="Titulo" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{contenido}"
+               placeholder="Contenido" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{categoria}"
+               placeholder="Categoria" class="form-control mb-4 col-4">
+        <input type="date" th:field="*{fecha}"
+               class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2">Crear Post</button>
+    </form>
+</main>
+<div th:replace="fragments :: footer"></div>
 </body>
 </html>
