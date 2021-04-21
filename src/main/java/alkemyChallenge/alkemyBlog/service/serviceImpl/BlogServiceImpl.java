@@ -25,4 +25,9 @@ public class BlogServiceImpl implements BlogService {
     public Blog getBlogById(Long id) {
         return null;
     }
+
+    @Override
+    public void saveBlog(Blog blog) {
+        this.blogRepository.save(blog);
+    }
 }

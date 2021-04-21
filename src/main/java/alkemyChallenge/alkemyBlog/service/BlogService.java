@@ -7,4 +7,5 @@ import java.util.List;
 public interface BlogService {
     List<Blog> getAllBlogs();
     Blog getBlogById(Long id);
+    void saveBlog(Blog blog);
 }
