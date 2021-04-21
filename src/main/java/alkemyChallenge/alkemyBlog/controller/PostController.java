@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+
 @Controller
 @RequestMapping("/posts")
 public class PostController {
@@ -35,6 +37,9 @@ public class PostController {
 
     @PostMapping("/savePost")
     public String savePost(@ModelAttribute("post") Post post){
+        LocalDateTime date = LocalDateTime.now();
+        post.setFecha(date);
+
         postService.savePost(post);
         return "redirect:/posts/";
     }
