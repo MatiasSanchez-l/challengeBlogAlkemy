@@ -18,6 +18,7 @@ public class PostController {
     @GetMapping("/")
     public String viewHomePage(Model model){
         model.addAttribute("listBlog", postService.getAllPosts());
+        model.addAttribute("title", "HOME");
         return "index";
     }
 
