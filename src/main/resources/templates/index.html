@@ -22,11 +22,11 @@
             </tr>
          </thead>
          <tbody>
-            <tr th:each="blog : ${listBlog}">
-                <td th:text="${blog.titulo}"></td>
-                <td th:text="${blog.contenido}"></td>
-                <td th:text="${blog.categoria}"></td>
-                <td th:text="${blog.fecha}"></td>
+            <tr th:each="post : ${listBlog}">
+                <td th:text="${post.titulo}"></td>
+                <td th:text="${post.contenido}"></td>
+                <td th:text="${post.categoria}"></td>
+                <td th:text="${post.fecha}"></td>
             </tr>
          </tbody>
      </table>
