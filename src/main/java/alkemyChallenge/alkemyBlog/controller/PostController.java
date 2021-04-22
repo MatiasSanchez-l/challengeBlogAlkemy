@@ -1,7 +1,9 @@
 package alkemyChallenge.alkemyBlog.controller;
 
 
+import alkemyChallenge.alkemyBlog.model.Category;
 import alkemyChallenge.alkemyBlog.model.Post;
+import alkemyChallenge.alkemyBlog.service.CategoryService;
 import alkemyChallenge.alkemyBlog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequestMapping("/posts")
 public class PostController {
     @Autowired
     private PostService postService;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("")
     public String viewHomePage(Model model){
@@ -26,8 +31,10 @@ public class PostController {
     @GetMapping("/showNewPostForm")
     public String showNewPostForm(Model model){
         Post post = new Post();
+        List<Category> categories = categoryService.getAllCategories();
 
         model.addAttribute("post", post);
+        model.addAttribute("categories", categories);
         model.addAttribute("title", "CREAR POST");
         return "new_post";
     }
