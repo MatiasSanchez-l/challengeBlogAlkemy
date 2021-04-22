@@ -34,6 +34,13 @@ public class PostController {
 
     @PostMapping("/savePost")
     public String savePost(@ModelAttribute("post") Post post){
+        String contenido = post.getContenido();
+        String titulo = post.getTitulo();
+
+        if(contenido.isEmpty() || titulo.isEmpty()){
+            return "redirect:/posts/showNewPostForm";
+        }
+
         LocalDateTime date = LocalDateTime.now();
         post.setFecha(date);
 
