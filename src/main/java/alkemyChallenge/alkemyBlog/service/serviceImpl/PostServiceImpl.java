@@ -28,7 +28,7 @@ public class PostServiceImpl implements PostService {
         if(optional.isPresent()){
             post = optional.get();
         }else{
-            throw new RuntimeException("Post not found for id :: " + id);
+            throw new RuntimeException("Error 404 Post not found for id :: " + id);
         }
         return post;
     }
