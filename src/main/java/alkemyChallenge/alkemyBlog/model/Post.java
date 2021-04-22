@@ -20,8 +20,9 @@ public class Post {
     @Column(name = "imagen")
     private String imagen;
 
-    @Column(name = "categoria")
-    private String categoria;
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Category categoria;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "fecha")
@@ -59,11 +60,11 @@ public class Post {
         this.imagen = imagen;
     }
 
-    public String getCategoria() {
+    public Category getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Category categoria) {
         this.categoria = categoria;
     }
 
