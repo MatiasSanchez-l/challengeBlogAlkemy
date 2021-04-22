@@ -21,7 +21,7 @@
             <tr th:each="post : ${listBlog}">
                 <td th:text="${post.titulo}"></td>
                 <td th:text="${post.contenido}"></td>
-                <td th:text="${post.categoria}"></td>
+                <td th:text="${post.categoria.getName()}"></td>
                 <td th:text="${post.fecha}"></td>
                 <td class="dropdown dropleft text-center">
                     <a class="btn btn-outline-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink${teacher.getId()}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
