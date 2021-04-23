@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head"/>
+<body>
+<div th:replace="fragments :: header"></div>
+<main class="container">
+ <h1 th:text=${post.titulo}></h1>
+    <p th:text=${post.fecha}></p>
+    <p th:text=${post.categoria.getName()}></p>
+    <h4 th:text=${post.contenido}></h4>
+</main>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>
