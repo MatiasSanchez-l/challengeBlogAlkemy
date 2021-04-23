@@ -18,7 +18,7 @@
             </tr>
          </thead>
          <tbody>
-            <tr th:each="post : ${listBlog}">
+            <tr th:each="post : ${posts}">
                 <td th:text="${post.titulo}"></td>
                 <td th:text="${post.contenido}"></td>
                 <td th:text="${post.categoria.getName()}"></td>
@@ -38,6 +38,27 @@
             </tr>
          </tbody>
         </table>
+        <div th:if = "${totalPages > 1}">
+            <div class="row col-sm-10">
+                <div class="col-sm-2">
+                    Paginas Totales: [[${totalItems}]]
+                </div>
+                <div class="col-sm-1">
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}" th:href="@{'/posts/page/' + ${i}}">[[${i}]]</a>
+                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+                </div>
+                <div class="col-sm-1">
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/posts/page/' + ${currentPage+1}}">Siguiente</a>
+                    <span th:unless="${currentPage < totalPages}">Siguiente</span>
+                </div>
+                <div class="col-sm-1">
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/posts/page/' + ${totalPages}}">Ultimo</a>
+                    <span th:unless="${currentPage < totalPages}">Ultimo</span>
+                </div>
+            </div>
+        </div>
      </div>
  </div>
 </main>
