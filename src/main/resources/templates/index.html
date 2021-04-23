@@ -27,7 +27,7 @@
                     <a class="btn btn-outline-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink${teacher.getId()}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="dropdownMenuLink${teacher.getId()}">
-                        <a class="btn btn-success text-light"
+                        <a  th:href="@{/posts//showPostInfo/{id}(id=${post.id})}" class="btn btn-success text-light"
                            type="button">Ver</a>
                         <a th:href="@{/posts/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-success text-light"
                            type="button">Editar</a>
