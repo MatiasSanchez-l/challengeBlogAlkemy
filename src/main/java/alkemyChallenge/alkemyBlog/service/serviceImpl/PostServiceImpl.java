@@ -54,4 +54,24 @@ public class PostServiceImpl implements PostService {
         Pageable peageable = PageRequest.of(pageNro -1, pageSize, sort);
         return this.postRepository.findAll(peageable);
     }
+
+    @Override
+    public void logicDeletePostById(Long id) {
+        Post post = this.getPostById(id);
+        post.setBorrado(true);
+    }
+
+    @Override
+    public Boolean postExistById(Long id) {
+        Boolean result = true;
+        Post post = this.getPostById(id);
+
+        if (post == null){
+            result = false;
+        }
+
+        return result;
+    }
+
+
 }
