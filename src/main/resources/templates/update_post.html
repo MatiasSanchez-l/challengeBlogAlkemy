@@ -5,16 +5,26 @@
 <div th:replace="fragments :: header"></div>
 <main class="container">
     <div align="center">
-        <h1 class="text-center">Editar Post</h1>
+        <h2 class="m-4 text-center">Editar Post</h2>
         <form action="#" th:action="@{/posts/savePost}" th:object="${post}" method="POST">
-            <input type="text" th:field="*{titulo}"
-                   placeholder="Titulo" class="form-control mb-4 col-8">
-            <input type="text" th:field="*{contenido}"
-                   placeholder="Contenido" class="form-control mb-4 col-8">
-            <input type="text" th:field="*{categoria}"
-                   placeholder="Categoria" class="form-control mb-4 col-8">
-            <input type="hidden" th:field="*{id}">
-            <button type="submit" class="btn btn-info col-4">Editar Post</button>
+            <div class="form-group">
+                <label for="titulo" class="text-left">Titulo</label>
+                <input type="text" th:field="*{titulo}"
+                       id="titulo" class="form-control mb-4 col-8">
+            </div>
+            <div class="form-group">
+                <label for="contenido" class="text-left">Contenido</label>
+                <textarea th:field="*{contenido}" id="contenido" rows="3" class="form-control mb-4 col-8"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="categoria" class="text-left">Categoria</label>
+                <select th:field="*{categoria}" class="form-control mb-4 col-8" id="categoria">
+                    <div th:each="category : ${categories}">
+                        <option th:text="${category.name}" th:value="${category.id}"></option>
+                    </div>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-info col-4">Editar</button>
         </form>
     </div>
 </main>

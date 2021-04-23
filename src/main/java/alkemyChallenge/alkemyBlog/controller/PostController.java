@@ -61,7 +61,10 @@ public class PostController {
     public String showFormForUpdate(@PathVariable(value = "id") long id,
                                     Model model){
         Post post = postService.getPostById(id);
+        List<Category> categories = categoryService.getAllCategories();
+
         model.addAttribute("post", post);
+        model.addAttribute("categories", categories);
         model.addAttribute("title", "EDITAR POST");
         return "update_post";
     }

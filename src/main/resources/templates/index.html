@@ -5,38 +5,33 @@
 <div th:replace="fragments :: header"></div>
 <main class="container">
  <div align="center">
-     <h1>Home</h1>
+     <h2 class="m-4">Home</h2>
      <div class="table-responsive">
          <table class = "table table-striped table-responsive-md">
          <thead>
             <tr>
-                <th>titulo</th>
-                <th>contenido</th>
-                <th>categoria</th>
-                <th>
+                <th></th>
+                <!--<th>
                     <a th:href="@{'/posts/page/' + ${currentPage} + '?sortField=fecha&sortDir=' + ${reverseSortDir}}">
                         fecha
                     </a>
-                </th>
-                <th>Opciones</th>
+                </th>-->
+                <th></th>
             </tr>
          </thead>
          <tbody>
             <tr th:each="post : ${posts}">
                 <div th:if="${post.borrado == false}">
                 <td th:text="${post.titulo}"></td>
-                <td th:text="${post.contenido}"></td>
-                <td th:text="${post.categoria.getName()}"></td>
-                <td th:text="${post.fecha}"></td>
                 <td class="dropdown dropleft text-center">
                     <a class="btn btn-outline-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink${teacher.getId()}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="dropdownMenuLink${teacher.getId()}">
-                        <a  th:href="@{/posts//showPostInfo/{id}(id=${post.id})}" class="btn btn-success text-light"
+                    <div class="dropdown-menu dropdown-menu-right row p-2">
+                        <a  th:href="@{/posts//showPostInfo/{id}(id=${post.id})}" class="btn btn-outline-success btn-block my-1"
                            type="button">Ver</a>
-                        <a th:href="@{/posts/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-success text-light"
+                        <a th:href="@{/posts/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-outline-primary btn-block my-1"
                            type="button">Editar</a>
-                        <a th:href="@{/posts/deletePost/{id}(id=${post.id})}" class="btn btn-success text-light"
+                        <a th:href="@{/posts/deletePost/{id}(id=${post.id})}" class="btn btn-outline-danger btn-block my-1"
                            type="button">Eliminar</a>
                     </div>
                 </td>
@@ -45,23 +40,23 @@
          </tbody>
         </table>
         <div th:if = "${totalPages > 1}">
-            <div class="row col-sm-10">
-                <div class="col-sm-2">
-                    Paginas Totales: [[${totalItems}]]
+            <div class="row col-sm-10 mb-2">
+                <div class="col-sm-4 mb-2">
+                    Posts Totales: [[${totalItems}]]
                 </div>
-                <div class="col-sm-1">
+                <div class="col-sm-2 mb-2">
                     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
                         <a th:if="${currentPage != i}" th:href="@{'/posts/page/' + ${i} + '?sortField=' +${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
                         <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
                     </span>
                 </div>
-                <div class="col-sm-1">
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/posts/page/' + ${currentPage+1} + '?sortField=' +${sortField} + '&sortDir=' + ${sortDir}}">Siguiente</a>
-                    <span th:unless="${currentPage < totalPages}">Siguiente</span>
+                <div class="col-sm-2 mb-2">
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/posts/page/' + ${currentPage+1} + '?sortField=' +${sortField} + '&sortDir=' + ${sortDir}}"> > </a>
+                    <span th:unless="${currentPage < totalPages}"> > </span>
                 </div>
                 <div class="col-sm-1">
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/posts/page/' + ${totalPages} + '?sortField=' +${sortField} + '&sortDir=' + ${sortDir}}">Ultimo</a>
-                    <span th:unless="${currentPage < totalPages}">Ultimo</span>
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/posts/page/' + ${totalPages} + '?sortField=' +${sortField} + '&sortDir=' + ${sortDir}}"> >>| </a>
+                    <span th:unless="${currentPage < totalPages}"> >>| </span>
                 </div>
             </div>
         </div>
