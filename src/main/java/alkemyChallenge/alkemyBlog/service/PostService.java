@@ -11,4 +11,6 @@ public interface PostService {
     void savePost(Post post);
     void deletePostById(Long id);
     Page<Post> findPaginated(int pageNro, int pageSize, String sortField, String sortDirection);
+    void logicDeletePostById(Long id);
+    Boolean postExistById(Long id);
 }
