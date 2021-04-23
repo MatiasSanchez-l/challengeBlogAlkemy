@@ -28,6 +28,9 @@ public class Post {
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
+    @Column(name = "borrado")
+    private Boolean borrado;
+
     public Long getId() {
         return id;
     }
@@ -74,5 +77,13 @@ public class Post {
 
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+    public Boolean getBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(Boolean borrado) {
+        this.borrado = borrado;
     }
 }
