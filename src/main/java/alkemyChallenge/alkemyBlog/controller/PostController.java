@@ -51,6 +51,7 @@ public class PostController {
 
         LocalDateTime date = LocalDateTime.now();
         post.setFecha(date);
+        post.setBorrado(false);
 
         postService.savePost(post);
         return "redirect:/posts/";
@@ -77,7 +78,12 @@ public class PostController {
 
     @GetMapping("/deletePost/{id}")
     public String deletePost(@PathVariable(value = "id") long id){
-        this.postService.deletePostById(id);
+        Boolean postExist = this.postService.postExistById(id);
+
+        if(postExist == true){
+            this.postService.logicDeletePostById(id);
+        }
+
         return "redirect:/posts";
     }
 
