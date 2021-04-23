@@ -26,7 +26,7 @@ public class PostController {
     @GetMapping("")
     public String viewHomePage(Model model){
 
-        return findPaginated(1, model);
+        return findPaginated(1,"fecha" , "desc",model);
     }
 
     @GetMapping("/showNewPostForm")
@@ -82,14 +82,20 @@ public class PostController {
     }
 
     @GetMapping("/page/{pageNro}")
-    public String findPaginated(@PathVariable (value = "pageNro")int pageNro, Model model){
+    public String findPaginated(@PathVariable (value = "pageNro")int pageNro,
+            @RequestParam("sortField") String sortField,
+            @RequestParam("sortDir") String sortDir,
+            Model model){
         int pageSize = 5;
-        Page<Post> page =  postService.findPaginated(pageNro, pageSize);
+        Page<Post> page =  postService.findPaginated(pageNro, pageSize, sortField, sortDir);
         List<Post> listPosts = page.getContent();
 
         model.addAttribute("currentPage", pageNro);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         model.addAttribute("posts", listPosts);
         model.addAttribute("title", "HOME");
 
