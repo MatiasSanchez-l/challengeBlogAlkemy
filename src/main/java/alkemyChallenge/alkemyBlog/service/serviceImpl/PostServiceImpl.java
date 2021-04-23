@@ -47,8 +47,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Page<Post> findPaginated(int pageNro, int pageSize) {
-        Pageable peageable = PageRequest.of(pageNro -1, pageSize);
+    public Page<Post> findPaginated(int pageNro, int pageSize, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
+                Sort.by(sortField).descending();
+
+        Pageable peageable = PageRequest.of(pageNro -1, pageSize, sort);
         return this.postRepository.findAll(peageable);
     }
 }
