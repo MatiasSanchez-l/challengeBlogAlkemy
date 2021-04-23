@@ -6,6 +6,7 @@ import alkemyChallenge.alkemyBlog.model.Post;
 import alkemyChallenge.alkemyBlog.service.CategoryService;
 import alkemyChallenge.alkemyBlog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,8 @@ public class PostController {
 
     @GetMapping("")
     public String viewHomePage(Model model){
-        model.addAttribute("listBlog", postService.getAllPosts());
-        model.addAttribute("title", "HOME");
-        return "index";
+
+        return findPaginated(1, model);
     }
 
     @GetMapping("/showNewPostForm")
@@ -79,5 +79,20 @@ public class PostController {
     public String deletePost(@PathVariable(value = "id") long id){
         this.postService.deletePostById(id);
         return "redirect:/posts";
+    }
+
+    @GetMapping("/page/{pageNro}")
+    public String findPaginated(@PathVariable (value = "pageNro")int pageNro, Model model){
+        int pageSize = 5;
+        Page<Post> page =  postService.findPaginated(pageNro, pageSize);
+        List<Post> listPosts = page.getContent();
+
+        model.addAttribute("currentPage", pageNro);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("posts", listPosts);
+        model.addAttribute("title", "HOME");
+
+        return "index";
     }
 }
