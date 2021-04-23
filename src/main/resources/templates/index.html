@@ -23,6 +23,7 @@
          </thead>
          <tbody>
             <tr th:each="post : ${posts}">
+                <div th:if="${post.borrado == false}">
                 <td th:text="${post.titulo}"></td>
                 <td th:text="${post.contenido}"></td>
                 <td th:text="${post.categoria.getName()}"></td>
@@ -39,6 +40,7 @@
                            type="button">Eliminar</a>
                     </div>
                 </td>
+                </div>
             </tr>
          </tbody>
         </table>
