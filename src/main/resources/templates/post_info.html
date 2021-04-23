@@ -4,7 +4,7 @@
 <body>
 <div th:replace="fragments :: header"></div>
 <main class="container">
- <h1 th:text="${post.titulo}"></h1>
+ <h2 th:text="${post.titulo}" class="m-4"></h2>
     <p th:text="${post.fecha}"></p>
     <p th:text="${post.categoria.getName()}"></p>
     <h4 th:text="${post.contenido}"></h4>
