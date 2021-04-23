@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/posts")
@@ -62,6 +63,16 @@ public class PostController {
         model.addAttribute("post", post);
         model.addAttribute("title", "EDITAR POST");
         return "update_post";
+    }
+
+    @GetMapping("/showPostInfo/{id}")
+    public String showPostInfo(@PathVariable(value = "id") long id,
+                                    Model model){
+        Post post = postService.getPostById(id);
+
+        model.addAttribute("post", post);
+        model.addAttribute("title", post.getTitulo().toUpperCase(Locale.ROOT));
+        return "post_info";
     }
 
     @GetMapping("/deletePost/{id}")
