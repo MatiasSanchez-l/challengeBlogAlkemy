@@ -1,9 +1,9 @@
 package alkemyChallenge.alkemyBlog.repository;
 
-import alkemyChallenge.alkemyBlog.model.Blog;
+import alkemyChallenge.alkemyBlog.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BlogRepository extends JpaRepository<Blog, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 }

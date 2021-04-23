@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head"/>
+<body>
+<div th:replace="fragments :: header"></div>
+<main class="container">
+    <div align="center">
+        <h1 class="text-center">CREAR POST</h1>
+        <form action="#" th:action="@{/posts/savePost}" th:object="${post}" method="POST">
+            <input type="text" th:field="*{titulo}"
+                   placeholder="Titulo" class="form-control mb-4 col-8">
+            <input type="text" th:field="*{contenido}"
+                   placeholder="Contenido" class="form-control mb-4 col-8">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Categoria</label>
+                <select th:field="*{categoria}" class="form-control mb-4 col-8" id="exampleFormControlSelect1">
+                    <div th:each="category : ${categories}">
+                        <option th:text="${category.name}" th:value="${category.id}"></option>
+                    </div>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-info col-4">Crear Post</button>
+        </form>
+    </div>
+
+</main>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

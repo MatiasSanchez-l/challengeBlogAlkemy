@@ -1,11 +1,12 @@
 package alkemyChallenge.alkemyBlog.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Blogs")
-public class Blog {
+@Table(name = "Posts")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,11 +20,13 @@ public class Blog {
     @Column(name = "imagen")
     private String imagen;
 
-    @Column(name = "categoria")
-    private String categoria;
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Category categoria;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "fecha")
-    private Date fecha;
+    private LocalDateTime fecha;
 
     public Long getId() {
         return id;
@@ -57,19 +60,19 @@ public class Blog {
         this.imagen = imagen;
     }
 
-    public String getCategoria() {
+    public Category getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Category categoria) {
         this.categoria = categoria;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 }
